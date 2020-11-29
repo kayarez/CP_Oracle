@@ -20,7 +20,7 @@ begin
   check_name => 'DB Structure Integrity Check',
   run_name => 'DBSIC');
   end;
-
+  
 select dbms_hm.get_run_report('DBSIC') from dual;
 
 begin

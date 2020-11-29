@@ -1,5 +1,5 @@
 begin 
-RegistrationUser('Katyxkkcvqa', 'qtxcy');
+RegistrationUser('Kaqa', 'qtxcy');
 end;
 select * from Users;
 
@@ -11,23 +11,20 @@ begin
 DeleteUser('Katyxkkcvqa', 'qtxcy');
 end;
 
-begin
-DeleteUser ('Katyxkkkkkkkkcvqa', 'qtxcy');
-end;
 
 begin
-DeleteUser ('Kakkkkkcvqa', 'qtxcy');
+AddTrain('general', '201a');
 end;
-
-begin 
-dbms_output.put_line('hello');
-end;
-insert into Users(login, password) values ('Katya', 'qwerty');
 
 begin
-CheckUser('Katya', 'qwerty');
+DeleteTrain('general', '201a');
 end;
 
-begin 
-encryptpassword('asdfg');
+begin
+UpdateType('geneeeral', 3);
 end;
+
+
+select * from Trains;
+
+

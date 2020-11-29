@@ -26,15 +26,12 @@ begin
   fetch c1 into cuser;
  if c1%found then
  raise_application_error(-20010, 'Error detected - '||SQLCODE||' ERROR '||SQLERRM);
- end if;
- 
+ end if; 
  insert into Users (login, password) values (inLogin, newPassword);
  commit;
  
  close c1;
  end;
-  
-
 
 --Encrypt password 
 create or replace procedure encryptPassword (casualPassword in out varchar2) is
@@ -68,7 +65,7 @@ is
 begin
   dpassword := inPassword;
   encryptPassword(dpassword);
-    CheckUser(inLogin, dPassword);
+  CheckUser(inLogin, dPassword);
   delete from Users u where u.login = inLogin and u.password = dpassword;
   commit;
 end;
