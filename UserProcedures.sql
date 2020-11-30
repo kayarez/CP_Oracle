@@ -70,3 +70,14 @@ begin
   commit;
 end;
 
+--Update login
+create or replace procedure UpdateLogin(inLogin in varchar2, inPassword in varchar2)
+is
+ dpassword varchar2 (2000);
+begin 
+  dpassword := inPassword;
+  encryptPassword(dpassword);
+update Users u set u.login = inLogin where u.Password = dPassword;
+commit;
+end;
+

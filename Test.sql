@@ -1,6 +1,10 @@
 begin 
 RegistrationUser('Kaqa', 'qtxcy');
 end;
+
+begin 
+UpdateLogin('Katya', 'qtxcy');
+end;
 select * from Users;
 
 begin 
@@ -21,9 +25,12 @@ DeleteTrain('general', '201a');
 end;
 
 begin
-UpdateType('geneeeral', 3);
+UpdateType('geneeeeeeeeeral', 3);
 end;
 
+begin
+UpdateNumber('202b', 3);
+end;
 
 select * from Trains;
 

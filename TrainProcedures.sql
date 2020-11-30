@@ -39,10 +39,18 @@ begin
   commit;
 end;
 
---update train
+--update train type
 create or replace procedure UpdateType(inType in nvarchar2, inId in number)
 is
 begin 
-update Trains set type = inType where id = inId;
+update Trains u set u.type = inType where u.id = inId;
+commit;
+end;
+
+--update number of train
+create or replace procedure UpdateNumber (inNumberTrain in nvarchar2, inId in number)
+is
+begin
+update Trains u set u.numbertrain = inNumberTrain where u.id = inId;
 commit;
 end;
