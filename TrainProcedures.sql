@@ -43,7 +43,7 @@ end;
 create or replace procedure UpdateType(inType in nvarchar2, inId in number)
 is
 begin 
-update Trains u set u.type = inType where u.id = inId;
+update Trains t set t.type = inType where t.id = inId;
 commit;
 end;
 
@@ -51,6 +51,6 @@ end;
 create or replace procedure UpdateNumber (inNumberTrain in nvarchar2, inId in number)
 is
 begin
-update Trains u set u.numbertrain = inNumberTrain where u.id = inId;
+update Trains t set t.numbertrain = inNumberTrain where t.id = inId;
 commit;
 end;
