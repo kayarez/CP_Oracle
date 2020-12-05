@@ -96,9 +96,17 @@ end;
 
 
 --update NumberSeats
-create or replace procedure UpdateNumberSeats(inNumberSeats in date, inId in number)
+create or replace procedure UpdateNumberSeats(inNumberSeats in int, inId in number)
 is
 begin 
 update Trips t set t.NumberSeats = inNumberSeats where t.id = inId;
+commit;
+end;
+
+--Remove NumberSeats
+create or replace procedure RemoveNumberSeats (inTripId in int)
+is 
+begin
+update Trips t set t.NumberSeats = t.NumberSeats - 1 where t.Id = inTripId and t.NumberSeats > 0;
 commit;
 end;

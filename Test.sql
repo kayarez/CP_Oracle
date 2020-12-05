@@ -34,4 +34,38 @@ end;
 
 select * from Trains;
 
+begin 
+AddTrip(To_Date('2020/11/11 17:21', 'yyyy/mm/dd HH24:MI'), To_Date('2020/11/11 17:30', 'yyyy/mm/dd HH24:MI'), 'Brest', 'Minsk', 102, 1, 1);
+end;
+
+begin 
+AddTrip(To_Date('2020/11/11 17:21', 'yyyy/mm/dd HH24:MI'), To_Date('2020/11/11 17:32', 'yyyy/mm/dd HH24:MI'), 'Brest', 'Minsk', 102, 1, 1);
+end;
+
+
+begin
+updatenumberseats(2, 2);
+end;
+
+select * from Trips;
+
+begin
+AddTicket('Prprp', 'qqw299494', 2);
+end;
+
+select * from Tickets;
+
+begin
+AddOrder(1, 1);
+end;
+
+select * from Orders;
+
+begin
+ConfirmOrder(1);
+end;
+
+begin
+CancelOrder(1);
+end;
 

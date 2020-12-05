@@ -25,6 +25,7 @@ begin
  raise_application_error(-20010, 'Error detected - '||SQLCODE||' ERROR '||SQLERRM);
  end if; 
  insert into Tickets (name, passport, tripId) values (inName, inPassport, inTripId);
+ RemoveNumberSeats(inTripId);
  commit;
  
  close c1;
