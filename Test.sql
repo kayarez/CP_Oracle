@@ -1,5 +1,5 @@
 begin 
-RegistrationUser('Kaqa', 'qtxcy');
+RegistrationUser('Kaqcva', 'qdfgntxcy');
 end;
 
 begin 
@@ -12,7 +12,7 @@ AuthorizationUser('Katyxkkcvqa', 'qtxcy');
 end;
 
 begin 
-DeleteUser('Katyxkkcvqa', 'qtxcy');
+DeleteUser('Kaqcva', 'qdfgntxcy');
 end;
 
 
@@ -69,3 +69,6 @@ begin
 CancelOrder(1);
 end;
 
+begin
+ExportUsers;
+end;
