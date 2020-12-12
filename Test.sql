@@ -1,18 +1,19 @@
 begin 
-RegistrationUser('Kaqcva', 'qdfgntxcy');
+DeleteUser('Kaqcva', 'qdfgntxcy');
 end;
 
 begin 
 UpdateLogin('Katya', 'qtxcy');
 end;
+select count(*) from Users;
 select * from Users;
-
+truncate table Users;
 begin 
 AuthorizationUser('Katyxkkcvqa', 'qtxcy');
 end;
 
 begin 
-DeleteUser('Kaqcva', 'qdfgntxcy');
+DeleteUser('Kaqqwa', 'qdfgntxcy');
 end;
 
 

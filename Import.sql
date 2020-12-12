@@ -2,6 +2,7 @@ create table tab1( id number,
 clob_data CLOB);
 drop table tab1;
 
+
 create or replace procedure ImportUsers(fname varchar2)
 is
 --work with file
@@ -20,6 +21,7 @@ begin
 INSERT INTO tab1 (id, clob_data)
 VALUES (1, empty_clob())
 RETURN clob_data INTO l_clob;
+u_row.CAST_TO_VARCHAR2(dbms_lob.getlength(l_bfile));
 l_bfile := BFILENAME('EXPORT_DIR', fname);
 DBMS_LOB.fileopen(l_bfile, DBMS_LOB.file_readonly);
 DBMS_LOB.loadclobfromfile (
@@ -32,16 +34,6 @@ bfile_csid => l_bfile_csid ,
 lang_context => l_lang_context,
 warning => l_warning);
 DBMS_LOB.fileclose(l_bfile);
-COMMIT;
-end;
-
-create or replace procedure Import
-is
-xml clob;
-type curtype is ref cursor;
-cur curtype;
-u_row Users%rowtype;
-begin
 select clob_data into xml from tab1;
 open cur for select *
 FROM XMLTABLE('/Users/user'
@@ -60,15 +52,13 @@ end loop;
 close cur;
 --truncate table tab1;
 EXECUTE IMMEDIATE 'TRUNCATE TABLE tab1';
-commit;
-end Import;
+COMMIT;
+end;
+
 
 select * from tab1;
 begin
 ImportUsers('Export.xml');
 end;
 
-begin
-Import();
-end;
 --help
