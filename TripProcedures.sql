@@ -45,11 +45,10 @@ begin
 
 
 --delete trip 
- create or replace procedure DeleteTrip (inDateDeparture in date, inTrainId in int)
+ create or replace procedure DeleteTrip (inPlaceDeparture in nvarchar2, inId in number)
 is
 begin
-   CheckTrain(inDateDeparture, inTrainId);
-  delete from Trips t where t.DateDeparture = inDateDeparture and t.TrainId = inTrainId;
+  delete from Trips t where t.PlaceDeparture = inPlaceDeparture and t.Id = inId;
   commit;
 end;
 
@@ -111,17 +110,3 @@ update Trips t set t.NumberSeats = t.NumberSeats - 1 where t.Id = inTripId and t
 commit;
 end;
 
---Search by PlaceDeparture
-create or replace procedure SearchDeparture (inPlaceDeparture in nvarchar2)
-is
- ctrip number;
-cursor c1 is select t.id from Trips t where t.DateDeparture = inDateDeparture and t.TrainId = inTrainId;
-begin 
- open c1;
- fetch c1 into ctrip;
- 
- if c1%notfound then
- raise_application_error(-20010, 'Error detected - '||SQLCODE||' ERROR '||SQLERRM);
- end if;
- close c1;
- end;

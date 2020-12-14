@@ -31,11 +31,10 @@ begin
  end;
 
 --Delete order
-create or replace procedure DeleteOrder (inDates in date, inTicketId in int)
+create or replace procedure DeleteOrder (inUserId in int, inTicketId in int)
 is
 begin
-   CheckOrder(inDates, inTicketId);
-  delete from Orders r where r.Dates = inDates and r.TicketId = inTicketId;
+  delete from Orders r where r.UserId = inUserId and r.TicketId = inTicketId;
   commit;
 end;
 

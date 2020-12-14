@@ -21,7 +21,6 @@ begin
 INSERT INTO tab1 (id, clob_data)
 VALUES (1, empty_clob())
 RETURN clob_data INTO l_clob;
-u_row.CAST_TO_VARCHAR2(dbms_lob.getlength(l_bfile));
 l_bfile := BFILENAME('EXPORT_DIR', fname);
 DBMS_LOB.fileopen(l_bfile, DBMS_LOB.file_readonly);
 DBMS_LOB.loadclobfromfile (
@@ -56,9 +55,3 @@ COMMIT;
 end;
 
 
-select * from tab1;
-begin
-ImportUsers('Export.xml');
-end;
-
---help

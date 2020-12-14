@@ -2,7 +2,7 @@
 create or replace procedure CheckTicket (inPassport in nvarchar2, inTripId in int)
 is
  cticket number;
-cursor c1 is select t.id from Ticket t where t.Passport = inPassport and t.TripId = inTripId;
+cursor c1 is select t.id from Tickets t where t.Passport = inPassport and t.TripId = inTripId;
 begin 
  open c1;
  fetch c1 into cticket;
@@ -29,7 +29,7 @@ begin
 end;
 
 --Add ticket
-create or replace procedure AddTicket (	inName in NVARCHAR2, inPassport in NVARCHAR2, inTripId in INT)
+create or replace procedure AddTicket (	inName in NVARCHAR2, inPassport in VARCHAR2, inTripId in INT)
 is 
 cticket number;
 cursor c1 is select t.id from Tickets t where t.Name = inName and t.Passport = inPassport and t.Tripid = inTripId;
@@ -49,12 +49,11 @@ begin
  close c1;
  end;
 
---delete train
-create or replace procedure DeleteTicket (inPassport in nvarchar2, inTripId in int)
+--delete ticket
+create or replace procedure DeleteTicket (inName in nvarchar2, inTripId in int)
 is
 begin
-  CheckTicket (inPassport, inTripId);
-  delete from Tickets t where t.Passport = inPassport and t.TripId = inTripId;
+  delete from Tickets t where t.Name = inName and t.TripId = inTripId;
   commit;
 end;
 
